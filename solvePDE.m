@@ -1,4 +1,4 @@
-function result = solvePDE(hs,tr,m,xp11)
+function [hs_new,tr_new,xp11_new] = solvePDE(hs,tr,m,xp11)
 dbt = zeros(1000,1);
 db =zeros(1000);
 for v=1:m-1
@@ -59,5 +59,7 @@ for i=m-1:-1:1
     xp11(i)=(tr(i)-g6)/hs(i,i);
     g6=0;
 end
-result =xp11;
+hs_new=hs;
+tr_new=tr;
+xp11_new=xp11;
 end

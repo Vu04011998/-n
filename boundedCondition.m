@@ -1,7 +1,6 @@
 function boundedCondition(KT,PT,KTB,DKB,PTB,m,n,py,tbien)
-dk = 0;
 g = 1;
-cs = zeros(m,n,py);
+cs = matrixIndex(m,n,py);
 for i=1:py
     for j=1:n
         jj = 1+(j-1)*m+(i-1)*m*n;
@@ -32,6 +31,10 @@ end
 ml=(n+1)*(py+1);
 hang = m*(n+1)*(py+1);
 cot = hang;
+PTT = zeros(row,1);
+[~,PTT_new]=deleteRow(hang,cot,KT,KTB,DKB,ml,PT,PTT,tbien);
+% BVD = BVD_new;
+PTT = PTT_new;
 t9=0;
 k10=0;
 for i=1:hang
