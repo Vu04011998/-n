@@ -16,7 +16,7 @@ for i=1:m*n*py
             cs(2,3)=cs(1,3)+3;
             cs(2,4)=cs(1,3);
         end
-        if (i>2 && (i<m))
+        if ((i>2) && (i<m))
             cs(i,1)=cs(i-1,2);
             cs(i,2)=cs(i-1,2)+2;
             cs(i,3)=cs(i-1,3)+2;
@@ -64,7 +64,7 @@ for i=1:m*n*py
     else
         if (duu~=0)
             cs(i,1)=cs(i-m*n,5);
-            cs(i,2)=cs(i,m*n,6);
+            cs(i,2)=cs(i-m*n,6);
             cs(i,3)=cs(i-m*n,7);
             cs(i,4)=cs(i-m*n,8);
             cs(i,5)=cs(i,1)+m*(n+1);

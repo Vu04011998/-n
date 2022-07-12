@@ -1,6 +1,7 @@
-function result = tonghopnd(xt,dk,dk1,dk2,nt)
+function nt = tonghopnd(xt,dk,dk1,dk2)
 dkk=1;
 dtt=0;
+nt = zeros(dk*dk1*dk2,8);
 for j=1:dk1
     for i=1:dk
         dtt=dtt+1;
@@ -20,7 +21,7 @@ for j=1:dk1
                     nt(dtt+di,1)=1.0;
                     nt(dtt+di,2)=nt(dtt+di-dk*dk1,6);
                     nt(dtt+di,3)=nt(dtt+di-dk*dk1,7);
-                    nt(dtt+dt,4)=1.0;
+                    nt(dtt+di,4)=1.0;
                     nt(dtt+di,5)=1.0;
                     nt(dtt+di,6)=xt(dkk+dj);
                     nt(dtt+di,7)=xt(dkk+dj+1);
@@ -143,5 +144,4 @@ for j=1:dk1
         end
     end
 end
-result = nt;
 end
