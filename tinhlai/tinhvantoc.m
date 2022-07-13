@@ -1,12 +1,10 @@
-function [u_,v_,w_]=tinhvantoc(p_,A1,B1)
+function [u_,v_,w_]=tinhvantoc(p_,A1,B1,L,D,eps)
 p_=reshape(p_,[size(p_,1) 1 size(p_,2)]);
 p_ = repmat(p_,[1 size(A1,2) 1]);
 [~,dn1hr,~,dn1ht]=hamdanghinhhop();
 k = size(A1,1)-1;
 k1 = size(A1,2)-1;
 k2 = size(A1,3)-1;
-L = 190e-3;
-D=315e-3;
 R = D/2;
 x1 = 2*pi/k;
 y1 = 1/k1;
@@ -75,7 +73,6 @@ for i1 = 1:k
         end
     end
 end
-eps = 0.7;
 x = linspace(0,2*pi,k-1);
 h_=1+eps*cos(x);
 h_=[h_(1) h_ h_(k-1)];

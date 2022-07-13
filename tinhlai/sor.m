@@ -1,16 +1,11 @@
-function Z = sor(k,k2,F2,F)
+function Z = sor(k,k2,F2,F,L,D,eps,muy_in,n)
 %% Time step
 %% Variable
 %% Parameter
-D=315e-3;
 R = D/2;
-L=190e-3;
 C=0.038e-3;
-eps=0.7;
 % pc=0;
 beta_old=1e8;
-muy_in=0.026; 
-n = 50; 
 beta = beta_old*C^2/muy_in/(2*pi*n)/R^2;
 omega = 0.3;
 si=1e-6;

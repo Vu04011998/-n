@@ -1,7 +1,8 @@
-function [F1_,F0_,F3,F,F2,A1,B1]=tinhF1_(T_dau)
+function [F1_,F0_,F3,F,F2,A1,B1,muy,hamy_]=tinhF1_(T_dau,eps)
 K = 0.034;
 T0 = 45;
 muy = exp(-K*(T_dau-T0));
+% muy = ones(size(T_dau));
 k1 = size(T_dau,2)-1;
 y1 = 1/k1;
 hamy_ = zeros(size(T_dau));
@@ -18,7 +19,6 @@ hamF2 = hamy_./muy.*(hamy_-F3);
 F2 = sum(hamF2,2)*y1;
 F = reshape(F,size(F,1),size(F,3));
 F2 = reshape(F2,size(F2,1),size(F2,3));
-eps = 0.7;
 x = linspace(0,2*pi,size(F,1)-2);
 h_=1+eps*cos(x);
 h_=[h_(1) h_ h_(end)];
