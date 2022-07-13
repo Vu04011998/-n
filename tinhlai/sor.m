@@ -1,4 +1,4 @@
-function theta_new = sor(k,k2,F2,F)
+function Z = sor(k,k2,F2,F)
 %% Time step
 %% Variable
 %% Parameter
@@ -63,15 +63,15 @@ fprintf('Thuat toan hoi tu sau %d lan lap',kk);
 
 theta1 = theta_new(2:k+1,round((k2+1)/8));
 theta2 = theta_new(2:k+1,round((k2+1)/2));
-p1 = beta_old/100000*log(theta1);
-p2 = beta_old/100000*log(theta2);
+p1 = beta*log(theta1);
+p2 = beta*log(theta2);
 p1 = (p1>0) .* p1;
 p2 = (p2>0) .* p2;
-figure(1);
-plot(x,p1,'-o',x,p2,'-o');
-figure(2);
-theta = theta_new(2:k+1,2:k2+1);
-theta = beta_old/100000*log(theta);
+% figure(1);
+% plot(x,p1,'-o',x,p2,'-o');
+% figure(2);
+% theta = theta_new(2:k+1,2:k2+1);
+theta = beta*log(theta_new);
 Z = (theta>0).*(theta);
-surf(X',Y',Z);
+% surf(X',Y',Z);
 end

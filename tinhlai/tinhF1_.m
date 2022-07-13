@@ -1,4 +1,4 @@
-function [F1_,F0_,F3,F,F2]=tinhF1_(T_dau)
+function [F1_,F0_,F3,F,F2,A1,B1]=tinhF1_(T_dau)
 K = 0.034;
 T0 = 45;
 muy = exp(-K*(T_dau-T0));
@@ -18,4 +18,20 @@ hamF2 = hamy_./muy.*(hamy_-F3);
 F2 = sum(hamF2,2)*y1;
 F = reshape(F,size(F,1),size(F,3));
 F2 = reshape(F2,size(F2,1),size(F2,3));
+eps = 0.7;
+x = linspace(0,2*pi,size(F,1)-2);
+h_=1+eps*cos(x);
+h_=[h_(1) h_ h_(end)];
+h_=h_';
+h_=repmat(h_,[1 k1+1 size(F,3)]);
+hamK1 = hamy_.*h_.^2./muy;
+K1 = cumsum(hamK1,2)*y1;
+hamK2 = h_.^2./muy;
+K2 = cumsum(hamK2,2)*y1;
+F3_mul = repmat(F3,[1 k1+1 1]);
+A1 = K1 - F3_mul.*K2;
+K3 = cumsum(hamF0_,2)*y1;
+F0_mul = repmat(F0_,[1 k1+1 1]);
+B1 = 1 - K3./F0_mul;
+B2 = zeros(size(B1));
 end
