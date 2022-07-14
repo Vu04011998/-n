@@ -54,7 +54,7 @@ for kk=1:60000
         break
     end
 end
-fprintf('Thuat toan hoi tu sau %d lan lap',kk);
+fprintf('Thuat toan hoi tu sau %d lan lap\n',kk);
 
 theta1 = theta_new(2:k+1,round((k2+1)/8));
 theta2 = theta_new(2:k+1,round((k2+1)/2));

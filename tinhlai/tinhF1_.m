@@ -1,7 +1,7 @@
 function [F1_,F0_,F3,F,F2,A1,B1,muy,hamy_]=tinhF1_(T_dau,eps)
 K = 0.034;
 T0 = 45;
-muy = exp(-K*(T_dau-T0));
+muy = max(exp(-K*(T_dau-T0)),0);
 % muy = ones(size(T_dau));
 k1 = size(T_dau,2)-1;
 y1 = 1/k1;
@@ -32,6 +32,6 @@ F3_mul = repmat(F3,[1 k1+1 1]);
 A1 = K1 - F3_mul.*K2;
 K3 = cumsum(hamF0_,2)*y1;
 F0_mul = repmat(F0_,[1 k1+1 1]);
-B1 = 1 - K3./F0_mul;
+B1 = K3./F0_mul;
 B2 = zeros(size(B1));
 end
