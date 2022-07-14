@@ -13,7 +13,7 @@ C=0.038e-3;
 eps=0.7;
 pc=0;
 beta=1e8; % ?
-muy=0.039; 
+muy=0.026; 
 n = 50; 
 omega = 0.3;
 si=1e-6;
@@ -63,7 +63,7 @@ for kk=1:60000
         break
     end
 end
-fprintf('Thuat toan hoi tu sau %d lan lap',kk);
+fprintf('Thuat toan hoi tu sau %d lan lap\n',kk);
 
 theta1 = theta_new(2:k+1,round((k1+1)/8));
 theta2 = theta_new(2:k+1,round((k1+1)/2));
@@ -78,3 +78,4 @@ theta = theta_new(2:k+1,2:k1+1);
 theta = beta/100000*log(theta);
 Z = (theta>0).*(theta);
 surf(X',Y',Z);
+fprintf('Kha nang tai cua may la %.1f kN\n', checktai(Z,L,D)*100000/1000);
