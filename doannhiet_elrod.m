@@ -29,6 +29,12 @@ x = linspace(0,2*pi*D/2,k);
 y = linspace(0,L,k1);
 [X,Y]=meshgrid(x,y);
 h=C*(1+eps*cos(x*2/D));
+h_save = h;
+% figure(1);
+% plot(x,h*1e6,'-o');
+% ylabel(' Chieu day mang dau(um)');
+% xlabel('Chu vi (m)');
+% grid on;
 h=[h(1) h h(k)];
 h=h';
 h=repmat(h,[1 k1+2]);
@@ -63,7 +69,7 @@ for kk=1:60000
         break
     end
 end
-fprintf('Thuat toan hoi tu sau %d lan lap\n',kk);
+fprintf('Thuat toan hoi tu sau %d lan lap',kk);
 
 theta1 = theta_new(2:k+1,round((k1+1)/8));
 theta2 = theta_new(2:k+1,round((k1+1)/2));
@@ -72,10 +78,22 @@ p2 = beta/100000*log(theta2);
 p1 = (p1>0) .* p1;
 p2 = (p2>0) .* p2;
 figure(1);
-plot(x,p1,'-o',x,p2,'-o');
+yyaxis left;
+plot(x,p1,'-bo',x,p2,'-ro');
+ylabel('Ap suat (bar)');
+yyaxis right;
+plot(x,h_save*1e6,'-go');
+ylabel('Be day mang dau (um)');
+legend('y=L/8','y=L/2','h(x)');
+title('Ap suat mang dau theo phuong chu vi');
+xlabel('Chu vi (m)');
+grid on;
 figure(2);
 theta = theta_new(2:k+1,2:k1+1);
 theta = beta/100000*log(theta);
 Z = (theta>0).*(theta);
 surf(X',Y',Z);
+xlabel('Phuong Chu vi (m)');
+ylabel('Phuong Chieu dai (m)');
+zlabel('Ap suat (bar)');
 fprintf('Kha nang tai cua may la %.1f kN\n', checktai(Z,L,D)*100000/1000);

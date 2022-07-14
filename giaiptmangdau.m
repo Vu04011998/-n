@@ -42,7 +42,7 @@ for kk = 1:20000
             end
         end
     end
-    if norm(T_new-T_old,'fro')<si
+    if sqrt(sum((T_new-T_old).^2,"all"))<si
         break
     end
 end
