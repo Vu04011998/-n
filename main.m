@@ -44,5 +44,3 @@ plot(x,T_plot_nhiet,'-ro');
 title('Phan bo nhiet cua mang dau theo phuong chu vi');
 xlabel('Chu vi (m)');
 ylabel('Nhiet do (do C)');
-
-fprintf('Nhiet do cao nhat trong mang dau la %f', max(T_dau,[],'all'));
