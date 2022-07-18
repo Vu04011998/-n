@@ -9,6 +9,7 @@ T_dau(:,k1+2,:)=50;
 delta = 1e-3;
 L = 315e-2;
 D = 190e-3;
+C = 0.038e-3;
 eps = 0.7;
 mein = 0.026;
 n = 50;
@@ -45,4 +46,22 @@ title('Phan bo nhiet cua mang dau theo phuong chu vi');
 xlabel('Chu vi (m)');
 ylabel('Nhiet do (do C)');
 
+T_plot_be_day = T_dau(:,:,round((k2+2)/2));
+x = linspace(0,360,k+2);
+y = linspace(0,1,k1+2);
+[X,Y] = meshgrid(x,y);
+H = C*(1+eps*cosd(X));
+Y = Y.*H*1e6;
+figure(3);
+surf(X',Y',T_plot_be_day);
+colormap autumn
+xlabel('Góc (độ)');
+ylabel('Bề dày (\mum)');
+title('Phân bố nhiệt theo bề dày màng dầu');
+Xk = (Y+38).*cosd(X);
+Yk = (Y+38).*sind(X);
+figure(4);
+surf(Xk',Yk',T_plot_be_day);
+colormap autumn
+axis equal
 fprintf('Nhiet do cao nhat trong mang dau la %f', max(T_dau,[],'all'));

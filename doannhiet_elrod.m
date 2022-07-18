@@ -67,12 +67,15 @@ fprintf('Thuat toan hoi tu sau %d lan lap\n',kk);
 
 theta1 = theta_new(2:k+1,round((k1+1)/8));
 theta2 = theta_new(2:k+1,round((k1+1)/2));
+theta3 = theta_new(2:k+1,round((k1+1)/4));
 p1 = beta/100000*log(theta1);
 p2 = beta/100000*log(theta2);
+p3 = beta/100000*log(theta3);
 p1 = (p1>0) .* p1;
 p2 = (p2>0) .* p2;
+p3 = (p3>0) .* p3;
 figure(1);
-plot(x,p1,'-o',x,p2,'-o');
+plot(x,p1,'-o',x,p2,'-o',x,p3,'-o');
 figure(2);
 theta = theta_new(2:k+1,2:k1+1);
 theta = beta/100000*log(theta);
