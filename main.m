@@ -55,9 +55,9 @@ Y = Y.*H*1e6;
 figure(3);
 surf(X',Y',T_plot_be_day);
 colormap autumn
-xlabel('Góc (độ)');
-ylabel('Bề dày (\mum)');
-title('Phân bố nhiệt theo bề dày màng dầu');
+xlabel('Goc (do)');
+ylabel('Be day (\mum)');
+title('Phan bo nhiet theo be day mang dau');
 Xk = (Y+38).*cosd(X);
 Yk = (Y+38).*sind(X);
 figure(4);
