@@ -58,12 +58,36 @@ colormap autumn
 xlabel('Goc (do)');
 ylabel('Be day (\mum)');
 title('Phan bo nhiet theo be day mang dau');
+[M,i_max] = max(T_plot_be_day,[],'all');
+X_T = X';
+Y_T = Y';
+X_max = X_T(i_max);
+Y_max = Y_T(i_max);
+T_max = M;
+text(X_max + 5, Y_max + 5, T_max+5, "T_{max} ="+num2str(T_max), "FontSize",16);
+hold on
+s1= scatter3(X_max,Y_max,T_max);
+s1.MarkerFaceColor = 'black';
+s1.SizeData = 100;
 Xk = (Y+38).*cosd(X);
 Yk = (Y+38).*sind(X);
 figure(4);
 surf(Xk',Yk',T_plot_be_day);
-xlabel('X(\mum)');
-ylabel('Y(\mum)');
+set(gca,'XTick',[]);
+set(gca,'YTick',[]);
 title('Phan bo nhiet theo he toa do tru');
+Xk_T = Xk';
+Yk_T = Yk';
+Xk_max = Xk_T(i_max);
+Yk_max = Yk_T(i_max);
+text(Xk_max - 20, Yk_max +20, T_max+5, "T_{max} ="+num2str(T_max), "FontSize",12);
+for i = 0:90:270
+    text(33*cosd(i),33*sind(i),T_max,num2str(i),"FontSize",16);
+end
+text(33*cosd(X_max),33*sind(X_max),T_max,num2str(round(X_max)),"FontSize",16,'HorizontalAlignment', 'center','VerticalAlignment','middle');
+hold on
+s2 = scatter3(Xk_max,Yk_max,T_max);
+s2.MarkerFaceColor = 'black';
+s2.SizeData = 100;
 colormap autumn
 axis equal
