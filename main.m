@@ -36,8 +36,8 @@ y = linspace(0,L,k2);
 [X,Y]=meshgrid(x,y);
 surf(X',Y',T_plot_bac);
 title('Phan bo nhiet cua mang dau tai mat tiep xuc voi bac');
-xlabel('Phuong chu vi');
-ylabel('Phuong chieu dai');
+xlabel('Phuong chu vi(m)');
+ylabel('Phuong chieu dai(m)');
 zlabel('Nhiet do (do C)');
 figure(2);
 T_plot_nhiet = T_plot_bac(:,round(k2/2));
@@ -62,6 +62,8 @@ Xk = (Y+38).*cosd(X);
 Yk = (Y+38).*sind(X);
 figure(4);
 surf(Xk',Yk',T_plot_be_day);
+xlabel('X(\mum)');
+ylabel('Y(\mum)');
+title('Phan bo nhiet theo he toa do tru');
 colormap autumn
 axis equal
-fprintf('Nhiet do cao nhat trong mang dau la %f', max(T_dau,[],'all'));
