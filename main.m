@@ -58,7 +58,8 @@ colormap autumn
 xlabel('Goc (do)');
 ylabel('Be day (\mum)');
 title('Phan bo nhiet theo be day mang dau');
-[M,i_max] = max(T_plot_be_day,[],'all');
+T_plot_be_day_reshape = reshape(T_plot_be_day,[(k+2)*(k2+2) 1]);
+[M,i_max] = max(T_plot_be_day_reshape);
 X_T = X';
 Y_T = Y';
 X_max = X_T(i_max);
