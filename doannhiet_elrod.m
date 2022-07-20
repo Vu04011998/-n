@@ -82,7 +82,7 @@ p2 = (p2>0) .* p2;
 p3 = (p3>0) .* p3;
 figure(1);
 yyaxis left;
-plot(x,p1,'-bo',x,p2,'-ro',x,p3,'-ko');
+plot(x,p1,'-bs',x,p2,'-ro',x,p3,'-k>');
 ylabel('Ap suat (bar)');
 yyaxis right;
 plot(x,h_save*1e6,'-go');

@@ -54,7 +54,7 @@ H = C*(1+eps*cosd(X));
 Y = Y.*H*1e6;
 figure(3);
 surf(X',Y',T_plot_be_day);
-colormap autumn
+colormap(flipud(autumn));
 xlabel('Goc (do)');
 ylabel('Be day (\mum)');
 title('Phan bo nhiet theo be day mang dau');
@@ -90,5 +90,5 @@ hold on
 s2 = scatter3(Xk_max,Yk_max,T_max);
 s2.MarkerFaceColor = 'black';
 s2.SizeData = 100;
-colormap autumn
+colormap(flipud(autumn))
 axis equal
